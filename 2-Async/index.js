@@ -17,6 +17,25 @@ const fs = require("fs");
 //     console.log(data);
 // });
 
-fs.rename("myBio.txt", "Bio.txt", (err)=>{
-    console.log(err);
-});
+// fs.rename("myBio.txt", "Bio.txt", (err)=>{
+//     console.log(err);
+// });
+
+
+// File and Folder deletion
+// fs.unlink("Lec/Bio.txt", (err) => {
+//     console.log("File deleted");
+//     console.log(err);
+// });
+
+// fs.rmdir("Lec", (err) => {
+//         console.log("Folder deleted");
+//         console.log(err);
+//     }
+// );
+
+// Folder Creation
+fs.mkdir("Lec", (err) => {
+        console.log("Folder Created");
+        console.log(err);
+    });
