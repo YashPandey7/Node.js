@@ -13,6 +13,10 @@ const fs = require("fs");
 // });
 
 // Read File
-fs.readFile('Bio.txt', "UTF-8", (err, data)=> {
-    console.log(data);
+// fs.readFile('Bio.txt', "UTF-8", (err, data)=> {
+//     console.log(data);
+// });
+
+fs.rename("myBio.txt", "Bio.txt", (err)=>{
+    console.log(err);
 });
