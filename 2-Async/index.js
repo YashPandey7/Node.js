@@ -11,3 +11,8 @@ const fs = require("fs");
 //     console.log("Text added successfully");
 //     console.log(err);
 // });
+
+// Read File
+fs.readFile('Bio.txt', "UTF-8", (err, data)=> {
+    console.log(data);
+});
