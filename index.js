@@ -24,4 +24,8 @@ const fs = require("fs");
 // const data = fs.readFileSync('Lec/Bio.txt',"utf-8");
 // console.log(data);
 
-fs.renameSync("Lec/Bio.txt", "Lec/myBio.txt");
+// fs.renameSync("Lec/Bio.txt", "Lec/myBio.txt");
+
+// fs.unlinkSync("Lec/myBio.txt");
+
+fs.rmdirSync("Lec");
