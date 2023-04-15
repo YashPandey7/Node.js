@@ -1,6 +1,12 @@
 const http = require('http');
+const fs = require("fs");
 
 const server = http.createServer((req, res) => {
+
+    const data = fs.readFileSync(`${__dirname}/API.json`, "utf-8");
+    const objdata = JSON.parse(data);
+
+
     // console.log(req.url);
     if(req.url == '/')
     {
@@ -8,7 +14,13 @@ const server = http.createServer((req, res) => {
     }
     else if(req.url == '/about')
     {
+
         res.end("Hello everyone, Welcome to About Page");
+    }
+    else if(req.url == '/userapi')
+    {
+        res.writeHead(200, {"content-type" : "application/json"});
+        res.end(objdata[2].name);
     }
     else if(req.url == '/contact')
     {
