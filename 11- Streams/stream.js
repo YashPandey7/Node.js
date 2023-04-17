@@ -1,12 +1,16 @@
-const EventEmitter = require('events');
-const event = new EventEmitter();
+const fs = require('fs');
+const http = require('http');
 
-event.on("click", ()=>{
-    console.log("Hello");
+const server = http.createServer();
+
+server.on("request", (req, res) => {
+    fs.readFile("API.json", "utf-8", (err, data) => {
+        if(err)
+        {
+            console.log(err);
+        }
+        res.end(data);
+    });
 });
 
-event.on("click", ()=>{
-    console.log("Dark Batman");
-});
-
-event.emit("click");
+server.listen(8000, "127.0.0.1");
