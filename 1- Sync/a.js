@@ -8,3 +8,5 @@ const fs = require("fs");
 
 const data = fs.readFileSync("a_read.txt", "utf-8");
 console.log(data);
+
+// fs.appendFileSync("a_read.txt", " - Yash Pandey");
