@@ -17,19 +17,21 @@ app.get("/", (req, res) => {
 });
 
 app.get("/about", (req, res) => {
-    res.render("index", {
+    res.render("about", {
         Username:"Yash Pandey",
     });
 });
 
 app.get("/about/*", (req, res) => {
     res.render("404", {
+        Username:"Yash Pandey",
         errorcomment: "404! About us page not found",
     });
 });
 
 app.get("*", (req, res) => {
-    res.render("index", {
+    res.render("404", {
+        Username:"Yash Pandey",
         errorcomment: "404! Page not found",
     });
 });
