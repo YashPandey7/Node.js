@@ -1,0 +1,21 @@
+C:\Program Files\MongoDB\Server\6.0\data\
+C:\Program Files\MongoDB\Server\6.0\log\
+
+"C:\Program Files\MongoDB\Server\6.0\bin\mongod.exe" --version
+
+
+db.content.insert({ 'name':'Yash', 'skill' : 'javascript'})
+
+db.content.insert([{
+        'name':'Yash',
+        'skill' : 'javascript'
+    },
+    {
+        'name':'Batman',
+        'skill' : 'python'
+    },
+    {
+        'name' : 'smriti',
+        'skill' : 'react'
+    }
+])
