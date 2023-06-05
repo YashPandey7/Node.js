@@ -47,7 +47,7 @@ const data = async() => {
             author:"Thapa Technical"
         });
         
-        const result = Playlist.insertMany([nodeplaylist, expressplaylist, mongodbplaylist]);
+        const result =await Playlist.insertMany([nodeplaylist, expressplaylist, mongodbplaylist]);
         console.log(result);
     }
     catch(err){
