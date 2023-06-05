@@ -25,8 +25,11 @@ const Playlist = new mongoose.model("course", playlistSchema);
 
 const getData = async() => {
     try{
-        const result = await Playlist.find({ctype : "Back-end"}).select({name:1});
-        console.log(result);
+        const result1 = await Playlist.find({ctype : "Back-end"}).select({name:1});
+        console.log(result1);
+
+        const result2 = await Playlist.find({$and : [{ctype : "Back-end"}, {videos : {$gte : 20}}]}).select({name:1});
+        console.log(result2);
     }catch(err){
         console.log(err);
     }
