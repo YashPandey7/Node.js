@@ -11,8 +11,8 @@ const studentSchema = new mongoose.Schema({
         type:String,
         unique:[true,"Email already exists"],
         required : true,
-        vaildate(value){
-            if(!validate.isEmail(value)){
+        validate(value){
+            if(!validator.isEmail(value)){
                 throw new Error('Invalid Email')
             }
         }
