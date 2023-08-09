@@ -4,7 +4,7 @@ const path = require("path");
 const hbs = require("hbs");
 const port = process.env.PORT || 8000;
 require("./db/conn");
-const Register = require("./models/register");
+const RegisterModel = require("./models/register");
 
 const static_path = path.join(__dirname, "../public");
 const template_path = path.join(__dirname, "../templates/views");
@@ -33,7 +33,34 @@ app.get("/register", (req, res) => {
 
 app.post("/register", async(req, res) => {
     try{
-        console.log(req.body.fisrtname);
+        // res.send(req.body.firstname);
+        const password = req.body.password;
+        const cpassword = req.body.cpassword;
+
+        if(password === cpassword)
+        {
+            const registerCustomer = new RegisterModel({
+                firstname  :   req.body.firstname,
+                lastname    :   req.body.lastname,
+                email       :   req.body.email,
+                contact     :   req.body.contact,
+                password : password,
+                confirmpassword : cpassword
+            });
+
+            const registered = await registerCustomer.save();
+            res.status(201).render("loggedin",{
+                firstname : req.body.firstname,
+                lastname : req.body.lastname,
+                email: req.body.email,
+                contact: req.body.contact,
+                password : req.body.password
+            });
+        }
+        else{
+            res.send("Password do not match!");
+        }
+
     }catch(err){
         res.status(400).send(err);
     }

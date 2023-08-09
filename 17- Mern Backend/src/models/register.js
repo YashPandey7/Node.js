@@ -23,7 +23,7 @@ const registerSchema = mongoose.Schema({
         type : String,
         required : true
     },
-    confirm_password : {
+    confirmpassword : {
         type : String,
         required : true
     }
