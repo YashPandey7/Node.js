@@ -70,6 +70,14 @@ app.get("/login", (req, res) => {
     res.render("login");
 });
 
+app.post("/login", async(req, res) => {
+    try{
+
+    }catch(err){
+        res.status(500).send(err);
+    }
+});
+
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
 })
