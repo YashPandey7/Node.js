@@ -49,13 +49,7 @@ app.post("/register", async(req, res) => {
             });
 
             const registered = await registerCustomer.save();
-            res.status(201).render("loggedin",{
-                firstname : req.body.firstname,
-                lastname : req.body.lastname,
-                email: req.body.email,
-                contact: req.body.contact,
-                password : req.body.password
-            });
+            res.status(201).render("login");
         }
         else{
             res.send("Password do not match!");
@@ -72,9 +66,23 @@ app.get("/login", (req, res) => {
 
 app.post("/login", async(req, res) => {
     try{
+        const email = req.body.email;
+        const password = req.body.password;
 
+        const useremail = await RegisterModel.findOne({email:email});
+        console.log(useremail.password);
+        if(useremail.password === password){
+            res.status(201).render("loggedin",{
+                firstname : useremail.firstname,
+                lastname : useremail.lastname,
+                email : email,
+                password : password
+            });
+        }else{
+            res.send("Password do not match");
+        }
     }catch(err){
-        res.status(500).send(err);
+        res.status(400).send(`Invalid Email ${err}`);
     }
 });
 
