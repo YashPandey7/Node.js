@@ -73,11 +73,14 @@ app.post("/login", async(req, res) => {
     try{
         const email = req.body.email;
         const password = req.body.password;
-
+ 
         const useremail = await RegisterModel.findOne({email:email});
 
         const ismatch = await bcrypt.compare(password, useremail.password);
         // console.log(useremail.password);
+
+        const token = await useremail.generateAuthToken();
+        console.log("Token is - " + token);
 
         if(ismatch){
             res.status(201).render("loggedin",{

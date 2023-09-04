@@ -44,11 +44,11 @@ registerSchema.methods.generateAuthToken = async function () {
 
         this.tokens = this.tokens.concat({token: token});
         await this.save();
-        console.log(token);
+        // console.log(token);
         return token;
     }catch(err){
-        resizeBy.send(err);
-        console.log(err);
+        res.send(err);
+        // console.log(err);
     }
 }
 
